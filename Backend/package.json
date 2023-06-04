@@ -1,0 +1,34 @@
+{
+  "name": "3d-model-viewer",
+  "version": "1.0.0",
+  "description": "3D модели",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "lint": "npx eslint ."
+  },
+  "keywords": [],
+  "author": "Lavrov Vasiliy",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "celebrate": "^15.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-winston": "^4.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.3",
+    "mongoose-type-url": "^2.1.0",
+    "validator": "^13.9.0",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.38.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "nodemon": "^2.0.22"
+  }
+}
