@@ -1,0 +1,8 @@
+.wellcome__title {
+  margin: 0 0 calc(100dvh / 6.7);
+  width: 245px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 33px;
+  text-align: center;
+}

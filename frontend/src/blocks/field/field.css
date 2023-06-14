@@ -1,0 +1,8 @@
+.field {
+  padding: 8px 6px;
+  width: calc(100% - 12px);
+  height: 23px;
+  border-bottom: 1px solid #BCBCBC;
+  display: flex;
+  justify-content: space-between;
+}

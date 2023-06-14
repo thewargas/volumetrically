@@ -1,0 +1,11 @@
+.wellcome {
+  background-image: url("../../images/wellcome-background.png");
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

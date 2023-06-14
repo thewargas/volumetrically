@@ -1,0 +1,10 @@
+.popup__logout-button {
+  margin-top: 20px;
+  width: 340px;
+  height: 44px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  text-align: left;
+  color: #B93939;
+}
