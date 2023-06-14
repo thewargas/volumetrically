@@ -5,11 +5,17 @@ import versionIcon from "../images/version.svg";
 import userIcon from "../images/user-icon.svg";
 import passwordIcon from "../images/password-icon.svg";
 import emailIcon from "../images/email-icon.svg";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function PopupSettings({ isOpen, setOpen, onValidation, isError, messageError }) {
   const formRef = useRef();
   const [isValidity, setValidity] = useState(true);
   const [isDark, setDark] = useState(false);
+
+  const currentUser = React.useContext(CurrentUserContext);
+  const [login, setLogin] = useState("");
+  const [email, setEmail] = useState("");
+  
   
   const [isPopupSkyboxOpen, setPopupSkyboxOpen] = useState(false);
 
@@ -18,6 +24,21 @@ function PopupSettings({ isOpen, setOpen, onValidation, isError, messageError })
   useEffect(() => {
     setValidity(formRef.current.checkValidity());
   }, [isOpen, isError]);
+
+  useEffect(() => {
+    setLogin(currentUser.login);
+    setEmail(currentUser.email);
+  }, [currentUser, isOpen]);
+
+  function handleChangeLogin(e) {
+    setLogin(e.target.value);
+    onValidation(e);
+  }
+
+  function handleChangeEmail(e) {
+    setEmail(e.target.value);
+    onValidation(e);
+  }
 
   return (
     <div
@@ -97,6 +118,8 @@ function PopupSettings({ isOpen, setOpen, onValidation, isError, messageError })
                 type="text"
                 placeholder="Введите логин"
                 name="login"
+                value={login || ""}
+                onChange={handleChangeLogin}
               />
             </div>
             <div className="field">
@@ -116,7 +139,9 @@ function PopupSettings({ isOpen, setOpen, onValidation, isError, messageError })
               className="field__input"
               type="text"
               placeholder="Введите почту"
-              name="search"
+              name="email"
+              value={email || ""}
+              onChange={handleChangeEmail}
             />
           </div>
           </div>

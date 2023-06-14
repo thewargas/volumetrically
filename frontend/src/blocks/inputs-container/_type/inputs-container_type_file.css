@@ -1,0 +1,13 @@
+.inputs-container_type_file {
+  margin-top: calc(100dvh / 12.1);
+  width: 328px;
+  height: 200px;
+  background-image: url(../../../images/dash\ line.svg);
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -3,12 +3,21 @@
 @import url(./blocks/button/button.css);
 @import url(./blocks/button/_disabled/button_disabled.css);
 @import url(./blocks/back-button/back-button.css);
+
 @import url(./blocks/inputs-container/inputs-container.css);
+@import url(./blocks/inputs-container/__text/inputs-container__text.css);
+@import url(./blocks/inputs-container/__file/inputs-container__file.css);
 @import url(./blocks/inputs-container/_type/inputs-container_type_autorize.css);
 @import url(./blocks/inputs-container/_type/inputs-container_type_header.css);
+@import url(./blocks/inputs-container/_type/inputs-container_type_file.css);
+@import url(./blocks/inputs-container/_type/inputs-container_type_description.css);
+
 @import url(./blocks/input/input.css);
 @import url(./blocks/input/_type/input_type_error.css);
+@import url(./blocks/input/_type/input_type_file.css);
+@import url(./blocks/input/_type/input_type_descriprion.css);
 @import url(./blocks/input/__image/input__image.css);
+@import url(./blocks/input/__image/_type/input__image_type_file.css);
 @import url(./blocks/input/__error-image/input__error-image.css);
 
 @import url(./blocks/fields/fields.css);
