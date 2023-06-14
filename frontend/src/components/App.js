@@ -36,7 +36,8 @@ function App() {
 
       .then(([userData, cardsData]) => {
         setCurrentUser(userData);
-        setCards(cardsData.reverse());
+        console.log(currentUser.email)
+        // setCards(cardsData.reverse());
       })
 
       .catch((error) => {
@@ -87,6 +88,7 @@ function App() {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
           setLoggedIn(true);
+          setAuth(false);
           navigate("/models", { replace: true });
         }
       })

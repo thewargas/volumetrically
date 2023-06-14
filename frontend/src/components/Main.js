@@ -1,9 +1,12 @@
 import React from "react";
 import Header from "./Header";
 import Card from "./Card";
+import { useState } from "react";
+import PopupAddModel from "./PopupAddModel";
 
 function Main({cards , onValidation, isError, messageError}) {
   
+  const [isPopupAddModelOpen, setPopupAddModelOpen] = useState(false);
 
   return (
     <>
@@ -15,15 +18,22 @@ function Main({cards , onValidation, isError, messageError}) {
       <main className="content">
       <section className="elements">
       <article className="element">
-            <button className="element__add-button" />
+            <button className="element__add-button" onClick={() => {setPopupAddModelOpen(true)}} />
         </article>
-        {cards.map((card) => {
+        {cards.map(() => {
           return (
             <Card/>
           );
         })}
       </section>
     </main>
+    <PopupAddModel 
+        isOpen={isPopupAddModelOpen}
+        setOpen={setPopupAddModelOpen}
+        onValidation={onValidation} 
+        isError={isError}
+        messageError={messageError}
+      />
     </>
   );
 }
