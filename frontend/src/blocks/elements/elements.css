@@ -1,0 +1,9 @@
+.elements {
+  margin-top: 14px;
+  max-width: 100%;
+  padding: 1px 0;
+  display: grid;
+  gap: 14px 10px;
+  grid-template-columns: repeat(auto-fit, minmax(calc((100% - 30px) / 2), 1fr));
+
+}

@@ -1,0 +1,11 @@
+.element__add-button {
+  padding: 0;
+  background-image: url(../../../images/add-card.svg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+  background-position: center, center;
+  width: 100%;
+
+}

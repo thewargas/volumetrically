@@ -1,0 +1,18 @@
+.navigation__button {
+  margin: 0 20px;
+  z-index: 1;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 38px;
+  gap: 5px;
+  transition: all 0.2s linear;
+  color: #3A3A3A;
+}

@@ -1,0 +1,10 @@
+.popup__submit-button {
+  margin-top: 40px;
+  width: 340px;
+  height: 44px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  text-align: left;
+  color: #3A3A3A;
+}

@@ -1,0 +1,8 @@
+.skybox__button {
+  background-image: url(../../../images/skybox-icon.svg);
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: 0;
+}

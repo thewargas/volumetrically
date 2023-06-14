@@ -1,0 +1,8 @@
+.element__title {
+  margin: 7px 0;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 25px;
+  text-align: center;
+}

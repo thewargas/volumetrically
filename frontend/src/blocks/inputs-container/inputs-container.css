@@ -1,0 +1,10 @@
+.inputs-container {
+  position: relative;
+  width: 328px;
+  min-height: 44px;
+  margin-bottom: 12px;
+}
+
+.inputs-container:last-of-type {
+  margin-bottom: calc(100dvh / 4.5);
+}

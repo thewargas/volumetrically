@@ -1,0 +1,8 @@
+.element {
+  max-width: 165px;
+  display: flex;
+  background-color: white;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}

@@ -1,0 +1,7 @@
+.auth__title {
+  margin: 30px 0 calc(100dvh / 6);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 44px;
+  text-align: left;
+}

@@ -3,8 +3,8 @@ const allowedCors = [
   'http://thewargas.nomoredomains.monster',
   'https://api.thewargas.nomoredomains.monster',
   'http://api.thewargas.nomoredomains.monster',
-  'http://localhost:3003',
-  'https://localhost:3003',
+  'http://localhost:3000',
+  'https://localhost:3000',
 ];
 
 module.exports = (req, res, next) => {

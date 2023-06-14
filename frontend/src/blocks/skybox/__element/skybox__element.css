@@ -1,0 +1,8 @@
+.skybox__element {
+  list-style: 0;
+  border-bottom: 1px solid #BCBCBC;
+}
+
+.skybox__element:last-of-type {
+  border: 0;
+}

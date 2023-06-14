@@ -1,0 +1,6 @@
+.popup_active {
+  opacity: 1;
+  visibility: visible;
+  left: 0;
+  transform: translateX(0);
+}
