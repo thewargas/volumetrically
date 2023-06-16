@@ -18,6 +18,8 @@ function PopupAddModel({
 
   const [inputs, setInputs] = useState({});
 
+  const [selectedFile, setSelectedFile] = useState([]);
+
   useEffect(() => {
     setValidity(formRef.current.checkValidity());
   }, [isOpen, isError]);
@@ -29,6 +31,12 @@ function PopupAddModel({
     });
     onValidation(e);
   }
+
+  const handleChangeFile = (e) => {
+    console.log(e.target.files[0]);
+    setSelectedFile(e.target.files[0]);
+    console.log(selectedFile.name);
+  };
 
   const handleClickUploadFile = () => {
     inputRef.current.click();
@@ -61,10 +69,11 @@ function PopupAddModel({
                   isError.login && "input_type_error"
                 }`}
                 type="file"
-                placeholder="Файл модели"
+                placeholder="Добавить модель"
                 name="login"
                 minLength="3"
                 ref={inputRef}
+                onChange={handleChangeFile}
                 accept=".glb"
                 required
               />
@@ -74,7 +83,9 @@ function PopupAddModel({
                   src={glbIcon}
                   alt="Иконка логина"
                 />
-                <p className="inputs-container__text">Файл модели</p>
+                <p className="inputs-container__text">
+                  {selectedFile.name || `Файл модели`}
+                </p>
               </div>
             </div>
             <div className="inputs-container">
