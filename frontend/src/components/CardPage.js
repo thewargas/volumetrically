@@ -38,11 +38,15 @@ function CardPage({ card }) {
       <model-viewer
         height="470px"
         alt=""
-        src="../bathroom2.glb"
+        auto-rotate
+        src="https://disk.yandex.ru/d/7bZUrXrIIEzq0Q"
         camera-controls
-        touch-action="pan-y"
         style={{ width: "100%", height: "400px" }}
-      ></model-viewer>
+      >
+        <div class="progress-bar hide" slot="progress-bar">
+          <div class="update-bar"></div>
+        </div>
+      </model-viewer>
       <nav className="model__nav-container">
         <button className="model__button">
           <img src={modelView} alt="Просмотр 3d модели в пространстве" />
