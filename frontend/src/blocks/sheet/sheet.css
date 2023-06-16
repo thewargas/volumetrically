@@ -1,0 +1,18 @@
+.sheet {
+  font-family: Nunito;
+  width: 100%;
+  height: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:root {
+  --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6);
+  --rsbs-bg: #E2E2E2;
+  --rsbs-handle-bg: #3A3A3A;
+  --rsbs-max-w: auto;
+  --rsbs-ml: env(safe-area-inset-left);
+  --rsbs-mr: env(safe-area-inset-right);
+  --rsbs-overlay-rounded: 16px;
+}

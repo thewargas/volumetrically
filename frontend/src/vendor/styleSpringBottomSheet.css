@@ -1,0 +1,14 @@
+@import "react-spring-bottom-sheet/dist/style.css";
+
+[data-rsbs-header]:before {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 100px;
+  height: 5px;
+  top: calc(8px + env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 12px;
+  background-color: var(--rsbs-handle-bg);
+}

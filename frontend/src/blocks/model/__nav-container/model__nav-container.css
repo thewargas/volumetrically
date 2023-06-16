@@ -1,0 +1,7 @@
+.model__nav-container {
+  margin-top: 30px;
+  width: 100%;
+  justify-content: center;
+  gap: 25px;
+  display: flex;
+}
