@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import errorIcon from "../images/error-icon.svg";
 import nameModelIcon from "../images/name-model.svg";
 import glbIcon from "../images/glb-file.svg";
+import infoIcon from "../images/version.svg";
 
 function PopupAddModel({
   isOpen,
@@ -112,7 +113,7 @@ function PopupAddModel({
                   isError.modelDescription && "input_type_error"
                 }`}
                 type="text"
-                placeholder="Название модели"
+                placeholder="Описание"
                 name="modelDescription"
                 minLength="3"
                 onChange={handleChangeInput}
@@ -127,7 +128,7 @@ function PopupAddModel({
               )}
               <img
                 className="input__image"
-                src={nameModelIcon}
+                src={infoIcon}
                 alt="Иконка логина"
               />
               <span
