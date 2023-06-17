@@ -7,7 +7,7 @@ const { errors } = require('celebrate');
 const router = require('./routes');
 const selectErrors = require('./middlewares/errors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// const enableCors = require('./middlewares/cors');
+const enableCors = require('./middlewares/cors');
 
 const {
   PORT = 3003,
@@ -35,7 +35,7 @@ app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
-// app.use(enableCors);
+app.use(enableCors);
 
 app.post('/upload', upload.single('file'), (req, res) => {
   res.json({
