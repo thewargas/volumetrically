@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const bodyParser = require('body-parser');
@@ -14,13 +15,33 @@ const {
 } = process.env;
 const app = express();
 
+const storage = multer.diskStorage({
+  destination: (_, __, cb) => {
+    cb(null, 'uploads');
+  },
+  filename: (_, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage });
+
 mongoose.connect(DB_URL);
 
 app.use(express.json());
+
+app.use('/uploads', express.static('uploads'));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 app.use(enableCors);
+
+app.post('/upload', upload.single('file'), (req, res) => {
+  res.json({
+    url: `/uploads/${req.file.originalname}`,
+  });
+});
 
 app.use(router);
 

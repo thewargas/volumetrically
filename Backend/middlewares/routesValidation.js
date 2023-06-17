@@ -1,4 +1,5 @@
 const { celebrate, Joi } = require('celebrate');
+const { urlRegExp } = require('../utils/constants');
 
 const loginValidation = celebrate({
   body: Joi.object().keys({
@@ -24,8 +25,8 @@ const changeUserInfoValidation = celebrate({
 
 const createCardValidation = celebrate({
   body: Joi.object().keys({
+    link: Joi.string().required().regex(urlRegExp),
     name: Joi.string().required(),
-    fileWeight: Joi.number().required(),
     description: Joi.string().required(),
   }),
 });

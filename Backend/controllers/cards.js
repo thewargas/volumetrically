@@ -7,13 +7,13 @@ const { CREATE_CODE } = require('../utils/constants');
 const createCard = (req, res, next) => {
   const { _id } = req.user;
   const {
+    link,
     name,
-    fileWeight,
     description,
   } = req.body;
   Card.create({
+    link,
     name,
-    fileWeight,
     description,
     owner: _id,
   })

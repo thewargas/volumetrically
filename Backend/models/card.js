@@ -1,13 +1,18 @@
 const mongoose = require('mongoose');
+const { urlRegExp } = require('../utils/constants');
 require('mongoose-type-url');
 
 const cardSchema = new mongoose.Schema({
-  name: {
+  link: {
     type: String,
     required: true,
+    validate: {
+      validator: (value) => urlRegExp.test(value),
+      message: 'Некорректная сслыка',
+    },
   },
-  fileWeight: {
-    type: Number,
+  name: {
+    type: String,
     required: true,
   },
   description: {
