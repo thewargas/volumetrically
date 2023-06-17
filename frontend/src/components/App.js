@@ -19,6 +19,8 @@ function App() {
   const [cards, setCards] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   const [currentUser, setCurrentUser] = useState({});
 
+  const [modelUrl, setModelUrl] = useState('');
+
   const navigate = useNavigate();
 
   const api = new Api({
@@ -28,6 +30,21 @@ function App() {
       "Content-Type": "application/json",
     },
   });
+
+  useEffect(() => {
+    if (localStorage.getItem("jwt")) {
+      const jwt = localStorage.getItem("jwt");
+      Auth.checkToken(jwt)
+        .then((res) => {
+          setLoggedIn(true);
+          navigate("/models", { replace: true });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -96,6 +113,16 @@ function App() {
       });
   }
 
+  function handleAddModel(file) {
+    api.uploadFile(file)
+      .then((url) => {
+        setModelUrl(`https://api.thewargas.nomoredomains.monster${url}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   const handleCardClick = (card) => {
     // setSelectedCard(card);
     // setImagePopupOpen(true);
@@ -149,6 +176,8 @@ function App() {
               onValidation={validateInputs}
               isError={isError}
               messageError={messageError}
+              url={modelUrl}
+              handleUploadFile={handleAddModel}
             />
           }
         />

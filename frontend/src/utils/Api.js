@@ -12,6 +12,14 @@ class Api {
     return Promise.reject(`Ошибка: ${response.status}`);
   }
 
+  uploadFile(data) {
+    return fetch(`${this._baseUrl}/upload`, {
+      headers: this._headers,
+      method: "POST",
+      body: data,
+    }).then(this._handleResponse);
+  }
+
   getInitialInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
