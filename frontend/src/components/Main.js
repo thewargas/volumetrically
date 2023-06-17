@@ -4,7 +4,7 @@ import Card from "./Card";
 import { useState } from "react";
 import PopupAddModel from "./PopupAddModel";
 
-function Main({ cards, onValidation, isError, messageError }) {
+function Main({ cards, onValidation, isError, messageError, url, handleUploadFile }) {
   const [isPopupAddModelOpen, setPopupAddModelOpen] = useState(false);
 
   return (
@@ -35,6 +35,8 @@ function Main({ cards, onValidation, isError, messageError }) {
         onValidation={onValidation}
         isError={isError}
         messageError={messageError}
+        url={url}
+        handleUploadFile={handleUploadFile}
       />
     </>
   );

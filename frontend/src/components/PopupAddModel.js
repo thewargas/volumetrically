@@ -10,6 +10,8 @@ function PopupAddModel({
   onValidation,
   isError,
   messageError,
+  url,
+  handleUploadFile,
 }) {
   const formRef = useRef();
   const inputRef = useRef(null);
@@ -19,10 +21,16 @@ function PopupAddModel({
   const [inputs, setInputs] = useState({});
 
   const [selectedFile, setSelectedFile] = useState([]);
+  const [urlFile, setUrlFile] = useState('');
 
   useEffect(() => {
     setValidity(formRef.current.checkValidity());
   }, [isOpen, isError]);
+
+  useEffect(() => {
+    setUrlFile(url);
+    console.log(urlFile);
+  }, [url]);
 
   function handleChangeInput(e) {
     setInputs({
@@ -33,9 +41,11 @@ function PopupAddModel({
   }
 
   const handleChangeFile = (e) => {
-    console.log(e.target.files[0]);
     setSelectedFile(e.target.files[0]);
-    console.log(selectedFile.name);
+    const formData = new FormData();
+    formData.append('file', selectedFile)
+    console.log(selectedFile);
+    handleUploadFile(formData);
   };
 
   const handleClickUploadFile = () => {
