@@ -40,8 +40,6 @@ function PopupSettings({
 
   const [isAuth, setAuth] = useState(false);
 
-  console.log(isAuth);
-
   const navigate = useNavigate();
   
   useEffect(() => {
