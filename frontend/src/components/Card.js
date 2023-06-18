@@ -1,21 +1,24 @@
 import React from "react";
-import cardImage from "../images/card-image.png";
 import { useNavigate } from "react-router-dom";
 
-function Card(card) {
+import blueSkyBox from '../images/blue-sky-box.png';
+
+function Card({ card, isDark }) {
   const navigate = useNavigate();
+
+
   return (
     <article
       onClick={() => {
-        navigate(`/models/${card.card}`);
-        console.log(card);
+        navigate(`/models/${card.id}`);
       }}
-      className="element"
+      className={`element ${isDark && `element_theme_dark`}`}
     >
       <figure className="element__container">
-        <img src={cardImage} className="element__image" alt="Bathroom" />
+      {!((card.name === 'Санузел') || (card.name === 'Плюшевый кот')) && <img src={blueSkyBox} className="element__overlay" alt={card.name} />}
+        <img src={card.poster} className="element__image" alt={card.name} />
         <figcaption>
-          <h2 className="element__title">Bathroom</h2>
+          <h2 className={`element__title ${isDark && `white`}`}>{card.name}</h2>
         </figcaption>
       </figure>
     </article>

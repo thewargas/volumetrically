@@ -1,8 +1,11 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/fonts.css);
 @import url(./blocks/button/button.css);
+@import url(./blocks/button/_theme/button_theme_dark.css);
 @import url(./blocks/button/_disabled/button_disabled.css);
 @import url(./blocks/back-button/back-button.css);
+@import url(./blocks/back-button/_theme/back-button_theme_dark.css);
+
 
 @import url(./blocks/inputs-container/inputs-container.css);
 @import url(./blocks/inputs-container/__text/inputs-container__text.css);
@@ -15,29 +18,37 @@
 @import url(./blocks/input/input.css);
 @import url(./blocks/input/_type/input_type_error.css);
 @import url(./blocks/input/_type/input_type_file.css);
+@import url(./blocks/input/_theme/input_theme_dark.css);
 @import url(./blocks/input/_type/input_type_descriprion.css);
 @import url(./blocks/input/__image/input__image.css);
 @import url(./blocks/input/__image/_type/input__image_type_file.css);
 @import url(./blocks/input/__error-image/input__error-image.css);
 
 @import url(./blocks/fields/fields.css);
+@import url(./blocks/fields/_theme/fields_theme_dark.css);
 @import url(./blocks/field/field.css);
 @import url(./blocks/field/__text/field__text.css);
+@import url(./blocks/field/__text/_theme/field__text_theme_dark.css);
 @import url(./blocks/field/__container/field__container.css);
 @import url(./blocks/field/__image/field__image.css);
 @import url(./blocks/field/__info/field__info.css);
 @import url(./blocks/field/_disabled/field_disabled.css);
 @import url(./blocks/field/__input/field__input.css);
 @import url(./blocks/field/__button-password/field__button-password.css);
+@import url(./blocks/field/__button-password/_theme/field__button-password_theme_dark.css);
 
 @import url(./blocks/toggle-switch/toggle-switch.css);
+@import url(./blocks/toggle-switch/_theme/toggle-switch_theme_dark.css);
 @import url(./blocks/toggle-switch/__button/toggle-switch__button.css);
+@import url(./blocks/toggle-switch/__button/_theme/toggle-switch__button_theme_dark.css);
 @import url(./blocks/toggle-switch/__button/_active/toggle-switch__button_active.css);
 
 @import url(./blocks/skybox/skybox.css);
 @import url(./blocks/skybox/__button/skybox__button.css);
+@import url(./blocks/skybox/__button/_theme/skybox__button_theme_dark.css);
 @import url(./blocks/skybox/__text/skybox__text.css);
 @import url(./blocks/skybox/__list/skybox__list.css);
+@import url(./blocks/skybox/__list/_theme/skybox__list_theme_dark.css);
 @import url(./blocks/skybox/__element/skybox__element.css);
 @import url(./blocks/skybox/__element-button/skybox__element-button.css);
 
@@ -51,7 +62,9 @@
 @import url(./blocks/wellcome/__link/wellcome__link.css);
 /* Header */
 @import url(./blocks/header/header.css);
+@import url(./blocks/header/_theme/header_theme_dark.css);
 @import url(./blocks/header/__button/header__button.css);
+@import url(./blocks/header/__button/_theme/header__button_theme_dark.css);
 @import url(./blocks/header/__container/header__container.css);
 
 @import url(./blocks/navigation/navigation.css);
@@ -64,39 +77,50 @@
 @import url(./blocks/navigation/__button-background/_type/navigation__button-background_type_right.css);
 /* Content */
 @import url(./blocks/wellcome/wellcome.css);
+@import url(./blocks/wellcome/_theme/wellcome_theme_dark.css);
 @import url(./blocks/wellcome/__title/wellcome__title.css);
 
 @import url(./blocks/auth/auth.css);
+@import url(./blocks/auth/_theme/auth_theme_dark.css);
 @import url(./blocks/auth/__title/auth__title.css);
 @import url(./blocks/auth/__form/auth__form.css);
 @import url(./blocks/auth/__input-error/auth__input-error.css);
 @import url(./blocks/auth/__input-error/_active/auth__input-error_active.css);
 @import url(./blocks/auth/__text/auth__text.css);
 @import url(./blocks/auth/__link/auth__link.css);
-@import url(./blocks/auth/__success-text/auth__success-text.css);
+@import url(./blocks/auth/__info-text/auth__info-text.css);
+@import url(./blocks/auth/__info-text/_type/auth__success-text_type_error.css);
 
 @import url(./blocks/content/content.css);
+@import url(./blocks/content/_theme/content_theme_dark.css);
 @import url(./blocks/elements/elements.css);
 @import url(./blocks/element/element.css);
+@import url(./blocks/element/_theme/element_theme_dark.css);
 @import url(./blocks/element/__container/element__container.css);
 @import url(./blocks/element/__image/element__image.css);
+@import url(./blocks/element/__overlay/element__overlay.css);
 @import url(./blocks/element/__title/element__title.css);
 @import url(./blocks/element/__add-button/element__add-button.css);
+@import url(./blocks/element/__add-button/_theme/element__add-button_theme_dark.css);
 
 @import url(./blocks/model/model.css);
+@import url(./blocks/model/_theme/model_theme_dark.css);
 @import url(./blocks/model/__nav-container/model__nav-container.css);
 @import url(./blocks/model/__button/model__button.css);
+@import url(./blocks/model/__button/_theme/model__button_theme_dark.css);
 /* Profile */
 
 /* elements */
 
 /* sheet */
 @import url(./blocks/sheet/sheet.css);
+@import url(./blocks/sheet/_theme/sheet_theme_dark.css);
 @import url(./blocks/sheet/_type/sheet_type_settings.css);
 @import url(./blocks/sheet/__title/sheet__title.css);
 /* Popup */
 @import url(./blocks/popup/popup.css);
 @import url(./blocks/popup/__container/popup__container.css);
+@import url(./blocks/popup/__container/_theme/popup__container_theme_dark.css);
 @import url(./blocks/popup/_active/popup_active.css);
 @import url(./blocks/popup/__title/popup__title.css);
 @import url(./blocks/popup/__subtitle/popup__subtitle.css);
@@ -108,3 +132,5 @@
 
 
 /*  */
+
+@import url(./blocks/white/white.css);

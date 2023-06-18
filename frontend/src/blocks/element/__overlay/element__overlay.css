@@ -1,0 +1,8 @@
+.element__overlay {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 157px;
+  height: 115px;
+  border-radius: 12px;
+}

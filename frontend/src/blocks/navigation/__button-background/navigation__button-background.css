@@ -3,5 +3,5 @@
   width: 203px;
   height: 38px;
   left: 0px;
-  transition: left 0.2s linear, height 0.1s linear;
+  transition: left 0.2s linear;
 }

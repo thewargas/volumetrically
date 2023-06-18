@@ -1,7 +1,7 @@
 .button_disabled {
-  background-color: #BCBCBC;
-  border: 1px solid rgba(0, 0, 0, 0.6);
-  color: rgba(0, 0, 0, 0.6);
+  background-color: transparent;
+  border: 1px solid #686868;
+  color: #686868;
   cursor: default;
   opacity: 20%;
 }

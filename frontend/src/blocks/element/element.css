@@ -1,8 +1,9 @@
 .element {
   max-width: 165px;
+  height: 158px;
   display: flex;
+  justify-content: center;
   background-color: white;
   border-radius: 12px;
   position: relative;
-  overflow: hidden;
 }
