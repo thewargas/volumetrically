@@ -1,0 +1,21 @@
+@keyframes position {
+  0% {
+    top: -120px;
+    left: -200px;
+  }
+  50% {
+    top: -440px;
+    left: -300px;
+  }
+  100% {
+    top: -120px;
+    left: -200px;
+  }
+}
+
+.wellcome__overlay {
+  position: fixed;
+  z-index: -1;
+  top: -440px;
+  animation: position 20s linear infinite;
+}

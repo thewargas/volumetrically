@@ -12,6 +12,7 @@ import passwordIcon from "../images/password-icon.svg";
 import passwordIconThemeDark from "../images/password-icon-theme-dark.svg";
 import emailIcon from "../images/email-icon.svg";
 import emailIconThemeDark from "../images/email-theme-dark.svg";
+
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function PopupSettings({
@@ -70,6 +71,10 @@ function PopupSettings({
 
   function handleLogout() {
     localStorage.removeItem("jwt");
+    navigate("/", { replace: true });
+  }
+
+  function handleAutorize() {
     navigate("/", { replace: true });
   }
 
@@ -178,7 +183,7 @@ function PopupSettings({
               className={`overlay ${isPopupSkyboxOpen && `overlay_active`}`}
             ></div>
           </div>
-          <h3 className="popup__subtitle">Настройки аккаунта</h3>
+          <h3 className={`popup__subtitle ${isDark && `white`}`}>Настройки аккаунта</h3>
 
           {isAuth && <form
             className={`popup__form`}
@@ -239,6 +244,9 @@ function PopupSettings({
           {!isAuth && <p className="popup__unautorize">Настройки недоступны, т.к. Вы не авторизованы!</p>}
           {isAuth && <button type="button" className={`button popup__logout-button ${isDark && `button_theme_dark`}`} onClick={handleLogout}>
             Выйти из аккаунта
+          </button>}
+          {!isAuth && <button type="button" className={`button popup__submit-button ${isDark && `button_theme_dark white`}`} style={{ marginTop: '20px'}} onClick={handleAutorize}>
+            Создать аккаунт или войти
           </button>}
         </div>
       </div>

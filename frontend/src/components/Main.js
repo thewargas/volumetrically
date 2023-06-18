@@ -49,6 +49,7 @@ function Main({ cards, onValidation, isError, messageError, url, handleUploadFil
         messageError={messageError}
         url={url}
         handleUploadFile={handleUploadFile}
+        isDark={isDark}
       />
     </>
   );

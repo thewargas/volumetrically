@@ -10,12 +10,19 @@ import { useState } from "react";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import "../vendor/styleSpringBottomSheet.css";
 import nameModelIcon from "../images/name-model.svg";
+import nameModelIconThemeDark from "../images/name-model-theme-dark.svg";
 import userIcon from "../images/user-icon.svg";
+import userIconThemeDark from "../images/login-theme-dark.svg";
 import glbIcon from "../images/glb-file.svg";
+import glbIconThemeDark from "../images/glb-file-theme-dark.svg";
 import calenderIcon from "../images/calender.svg";
+import calenderIconThemeDark from "../images/calender-theme-dark.svg";
 import darkThemeIcon from "../images/dark-theme.svg";
+import darkThemeIconThemeDark from "../images/dark-theme-theme-dark.svg";
 import skyBoxIcon from "../images/skybox.svg";
+import skyBoxIconThemeDark from "../images/skybox-theme-dark.svg";
 import versionIcon from "../images/version.svg";
+import versionIconThemeDark from "../images/version-theme-dark.svg";
 
 import blueSkyBox from '../images/blue-sky-box.png';
 
@@ -47,7 +54,8 @@ function CardPage({ card, skybox, setSkybox, isDark, setDark }) {
         skybox-image={((skybox === 'Blue sky') && blueSkyBox) || null}
       >
         <div className="progress-bar hide" slot="progress-bar">
-          <div className="update-bar"></div>
+          <div className="update-bar">
+          </div>
         </div>
       </model-viewer>
       <nav className="model__nav-container">
@@ -78,56 +86,59 @@ function CardPage({ card, skybox, setSkybox, isDark, setDark }) {
         }}
       >
         <div className={`sheet`}>
-          <h2 className="sheet__title">Информация</h2>
-          <div className="fields">
+        <div className={`sheet__overlay ${isDark && `sheet__overlay_theme_dark`}`}>
+          <div className={`sheet__stick`}></div>
+        </div>
+          <h2 className={`sheet__title ${isDark && `white`}`}>Информация</h2>
+          <div className={`fields ${isDark && `fields_theme_dark`}`}>
             <div className="field">
               <div className="field__container">
-                <img src={nameModelIcon} alt="Иконка полумесяца" />
-                <p className="field__text">Название</p>
+                <img src={isDark ? nameModelIconThemeDark : nameModelIcon} alt="Иконка полумесяца" />
+                <p className={`field__text ${isDark && `field__text_theme_dark`}`}>Название</p>
               </div>
-              <p className="field__info">{card.name}</p>
+              <p className={`field__info ${isDark && `white`}`}>{card.name}</p>
             </div>
             <div className="field">
               <div className="field__container">
-                <img src={userIcon} alt="Иконка полумесяца" />
-                <p className="field__text">Автор</p>
+                <img src={isDark ? userIconThemeDark : userIcon} alt="Иконка полумесяца" />
+                <p className={`field__text ${isDark && `field__text_theme_dark`}`}>Автор</p>
               </div>
-              <p className="field__info">{card.owner}</p>
+              <p className={`field__info ${isDark && `white`}`}>{card.owner}</p>
             </div>
             <div className="field">
               <div className="field__container">
                 <img
-                  src={infoIcon}
+                  src={isDark ? versionIconThemeDark : infoIcon}
                   className="field__image"
                   alt="Иконка полумесяца"
                 />
-                <p className="field__text">Описание</p>
+                <p className={`field__text ${isDark && `field__text_theme_dark`}`}>Описание</p>
               </div>
-              <p className="field__info">
+              <p className={`field__info ${isDark && `white`}`}>
                 {card.description}
               </p>
             </div>
             <div className="field">
               <div className="field__container">
                 <img
-                  src={glbIcon}
+                  src={isDark ? glbIconThemeDark : glbIcon}
                   className="field__image"
                   alt="Иконка полумесяца"
                 />
-                <p className="field__text">Вес файла</p>
+                <p className={`field__text ${isDark && `field__text_theme_dark`}`}>Вес файла</p>
               </div>
-              <p className="field__info">{card.fileWeight}</p>
+              <p className={`field__info ${isDark && `white`}`}>{card.fileWeight}</p>
             </div>
-            <div className="field">
+            <div className="field field_disabled">
               <div className="field__container">
                 <img
-                  src={calenderIcon}
+                  src={isDark ? calenderIconThemeDark : calenderIcon}
                   className="field__image"
                   alt="Иконка полумесяца"
                 />
-                <p className="field__text">Дата публикации</p>
+                <p className={`field__text ${isDark && `field__text_theme_dark`}`}>Дата публикации</p>
               </div>
-              <p className="field__info">{card.createDate}</p>
+              <p className={`field__info ${isDark && `white`}`}>{card.createDate}</p>
             </div>
           </div>
         </div>
@@ -139,17 +150,18 @@ function CardPage({ card, skybox, setSkybox, isDark, setDark }) {
         }}
       >
         <div className="sheet sheet_type_settings">
-          <h2 className="sheet__title">Настройки</h2>
-          <div className="fields">
+          <div className={`sheet__overlay ${isDark && `sheet__overlay_theme_dark`}`}></div>
+          <h2 className={`sheet__title ${isDark && `white`}`}>Настройки</h2>
+          <div className={`fields ${isDark && `fields_theme_dark`}`}>
             <div className="field">
               <div className="field__container">
-                <img src={darkThemeIcon} alt="Иконка полумесяца" />
-                <p className="field__text">Тёмная тема</p>
+                <img src={isDark ?  darkThemeIconThemeDark : darkThemeIcon} alt="Иконка полумесяца" />
+                <p className={`field__text ${isDark && `field__text_theme_dark`}`}>Тёмная тема</p>
               </div>
-              <div className="toggle-switch">
+              <div className={`toggle-switch ${isDark && `toggle-switch_theme_dark`}`}>
                 <button
                   className={`toggle-switch__button ${
-                    isDark && `toggle-switch__button_active`
+                    isDark && `toggle-switch__button_theme_dark toggle-switch__button_active`
                   }`}
                   onClick={() => {
                     setDark(!isDark);
@@ -160,22 +172,22 @@ function CardPage({ card, skybox, setSkybox, isDark, setDark }) {
 
             <div className="field">
               <div className="field__container">
-                <img src={skyBoxIcon} alt="Иконка солнца" />
-                <p className="field__text">Skybox</p>
+                <img src={isDark ? skyBoxIconThemeDark : skyBoxIcon} alt="Иконка солнца" />
+                <p className={`field__text ${isDark && `field__text_theme_dark`}`}>Skybox</p>
               </div>
               <div className="skybox">
-                <p className="skybox__text">{skybox}</p>
+                <p className={`skybox__text ${isDark && `white`}`}>{skybox}</p>
                 <button
-                  className="skybox__button"
+                  className={`skybox__button ${isDark && `skybox__button_theme_dark`}`}
                   onClick={() => {
                     setPopupSkyboxOpen(true);
                   }}
                 ></button>
                 {isPopupSkyboxOpen && (
-                  <ul className="skybox__list">
+                  <ul className={`skybox__list ${isDark && `skybox__list_theme_dark`}`}>
                     <li className="skybox__element">
                       <button
-                        className="skybox__element-button"
+                        className={`skybox__element-button ${isDark && `white`}`}
                         onClick={() => {
                           setSkybox("Default");
                           setPopupSkyboxOpen(false);
@@ -186,7 +198,7 @@ function CardPage({ card, skybox, setSkybox, isDark, setDark }) {
                     </li>
                     <li className="skybox__element">
                       <button
-                        className="skybox__element-button"
+                        className={`skybox__element-button ${isDark && `white`}`}
                         onClick={() => {
                           setSkybox("Night");
                           setPopupSkyboxOpen(false);
@@ -197,7 +209,7 @@ function CardPage({ card, skybox, setSkybox, isDark, setDark }) {
                     </li>
                     <li className="skybox__element">
                       <button
-                        className="skybox__element-button"
+                        className={`skybox__element-button ${isDark && `white`}`}
                         onClick={() => {
                           setSkybox("Blue sky");
                           setPopupSkyboxOpen(false);
@@ -213,10 +225,10 @@ function CardPage({ card, skybox, setSkybox, isDark, setDark }) {
 
             <div className="field field_disabled">
               <div className="field__container">
-                <img src={versionIcon} alt="Иконка полумесяца" />
-                <p className="field__text">Версия приложения</p>
+                <img src={isDark ? versionIconThemeDark : versionIcon} alt="Иконка полумесяца" />
+                <p className={`field__text ${isDark && `field__text_theme_dark`}`}>Версия приложения</p>
               </div>
-              <p className="field__info" style={{width: '37px'}}>1.0.0</p>
+              <p className={`field__info ${isDark && `white`}`} style={{width: '37px'}}>1.0.0</p>
             </div>
 
             <div

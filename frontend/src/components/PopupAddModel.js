@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import errorIcon from "../images/error-icon.svg";
 import nameModelIcon from "../images/name-model.svg";
+import nameModelIconThemeDark from "../images/name-model-theme-dark.svg";
 import glbIcon from "../images/glb-file.svg";
+import glbIconThemeDark from "../images/glb-file-theme-dark.svg";
 import infoIcon from "../images/version.svg";
+import infoIconThemeDark from "../images/version-theme-dark.svg";
 import axios from "axios";
 
 function PopupAddModel({
@@ -13,6 +16,7 @@ function PopupAddModel({
   messageError,
   url,
   handleUploadFile,
+  isDark,
 }) {
   const formRef = useRef();
   const inputRef = useRef(null);
@@ -78,15 +82,15 @@ function PopupAddModel({
 
   return (
     <div className={`popup ${isOpen && "popup_active"}`}>
-      <div className="popup__container">
+      <div className={`popup__container ${isDark && `popup__container_theme_dark`}`}>
         <div>
           <button
-            className="back-button"
+            className={`back-button ${isDark && `back-button_theme_dark`}`}
             onClick={() => {
               setOpen(false);
             }}
           ></button>
-          <h2 className="popup__title">Добавить модель</h2>
+          <h2 className={`popup__title ${isDark && `white`}`}>Добавить модель</h2>
           <form
             className={`popup__form`}
             action="#"
@@ -95,7 +99,7 @@ function PopupAddModel({
             noValidate
           >
             <div
-              className="inputs-container inputs-container_type_file"
+              className={`inputs-container inputs-container_type_file ${isDark && `inputs-container_theme_dark`}`}
               onClick={handleClickUploadFile}
             >
               <input
@@ -114,17 +118,17 @@ function PopupAddModel({
               <div className="inputs-container__file">
                 <img
                   className="input__image input__image_type_file"
-                  src={glbIcon}
+                  src={isDark ? glbIconThemeDark : glbIcon}
                   alt="Иконка логина"
                 />
-                <p className="inputs-container__text">
+                <p className={`inputs-container__text ${isDark && `white`}`}>
                   {selectedFile.name || `Файл модели`}
                 </p>
               </div>
             </div>
             <div className="inputs-container">
               <input
-                className={`input ${isError.modelName && "input_type_error"}`}
+                 className={`input ${isDark && `input_theme_dark`} ${isError.modelName && "input_type_error"}`}
                 type="text"
                 placeholder="Название модели"
                 name="modelName"
@@ -141,7 +145,7 @@ function PopupAddModel({
               )}
               <img
                 className="input__image"
-                src={nameModelIcon}
+                src={isDark ? nameModelIconThemeDark : nameModelIcon}
                 alt="Иконка логина"
               />
               <span
@@ -154,7 +158,7 @@ function PopupAddModel({
             </div>
             <div className="inputs-container inputs-container_type_description">
               <textarea
-                className={`input input_type_descriprion ${
+                 className={`input ${isDark && `input_theme_dark`} input_type_descriprion ${
                   isError.modelDescription && "input_type_error"
                 }`}
                 type="text"
@@ -173,7 +177,7 @@ function PopupAddModel({
               )}
               <img
                 className="input__image"
-                src={infoIcon}
+                src={isDark ? infoIconThemeDark : infoIcon}
                 alt="Иконка логина"
               />
               <span
@@ -184,11 +188,11 @@ function PopupAddModel({
                 {isError.modelDescription && messageError.modelDescription}
               </span>
             </div>
-            <button type="submit" className={`button popup__submit-button`}>
+            <button type="submit" className={`button popup__submit-button ${isDark && `button_theme_dark white`}`}>
               Опубликовать
             </button>
           </form>
-          <button type="button" className={`button popup__logout-button`}>
+          <button type="button" className={`button popup__logout-button ${isDark && `button_theme_dark`}`}>
             Отменить
           </button>
         </div>

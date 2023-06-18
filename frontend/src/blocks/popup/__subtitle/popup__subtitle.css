@@ -1,8 +1,8 @@
 .popup__subtitle {
-  width: calc(100% - 32px);
+  width: 340px;
   margin: 17px 0 4px 0;
   font-size: 14px;
   font-weight: 400;
   line-height: 19px;
-  text-align: left;  
+  text-align: center;  
 }
