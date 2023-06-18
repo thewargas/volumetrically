@@ -4,9 +4,8 @@ import Card from "./Card";
 import { useState } from "react";
 import PopupAddModel from "./PopupAddModel";
 
-function Main({ cards, onValidation, isError, messageError, url, handleUploadFile, onUpdateUser, errorUpdateUser, isDark, setDark }) {
+function Main({ cards, onValidation, isError, messageError, url, handleUploadFile, onUpdateUser, errorUpdateUser, isDark, setDark, skybox, setSkybox }) {
   const [isPopupAddModelOpen, setPopupAddModelOpen] = useState(false);
-
 
   return (
     <>
@@ -18,6 +17,8 @@ function Main({ cards, onValidation, isError, messageError, url, handleUploadFil
         errorUpdateUser={errorUpdateUser}
         isDark={isDark}
         setDark={setDark}
+        skybox={skybox}
+        setSkybox={setSkybox}
       />
       <main className={`content ${isDark && `content_theme_dark`}`}>
         <section className="elements">

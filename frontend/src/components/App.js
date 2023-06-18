@@ -20,8 +20,6 @@ function App() {
 
   const [errorUpdateUser, setErrorUpdateUser] = useState(false);
 
-  const [skybox, setSkybox] = useState("default");
-
   const [cards, setCards] = useState([
     {
       id: '126b05f7-1884-42bc-952f-ada6a80feca6',
@@ -169,6 +167,7 @@ function App() {
   const [modelUrl, setModelUrl] = useState('');
 
   const [isDark, setDark] = useState(true);
+  const [skybox, setSkybox] = useState("default");
 
   const navigate = useNavigate();
 
@@ -349,6 +348,8 @@ function App() {
               errorUpdateUser={errorUpdateUser}
               isDark={isDark}
               setDark={setDark}
+              skybox={skybox}
+              setSkybox={setSkybox}
             />
           }
         />

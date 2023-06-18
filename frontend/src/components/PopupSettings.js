@@ -24,6 +24,8 @@ function PopupSettings({
   errorUpdateUser,
   isDark,
   setDark,
+  skybox,
+  setSkybox,
 }) {
   const formRef = useRef();
   const [isValidity, setValidity] = useState(true);
@@ -36,17 +38,26 @@ function PopupSettings({
 
   const [isPopupSkyboxOpen, setPopupSkyboxOpen] = useState(false);
 
-  const [skybox, setSkybox] = useState("default");
+  const [isAuth, setAuth] = useState(false);
+
+  console.log(isAuth);
 
   const navigate = useNavigate();
-
+  
   useEffect(() => {
-    setValidity(formRef.current.checkValidity());
-  }, [isOpen, isError]);
+    if (isAuth) {
+      setValidity(formRef.current.checkValidity());
+    }
+  }, [isOpen, isError, isAuth]);
 
   useEffect(() => {
     setLogin(currentUser.login);
     setEmail(currentUser.email);
+
+    if (currentUser.login) {
+      setAuth(true);
+    }
+
   }, [currentUser, isOpen]);
 
   function handleChangeLogin(e) {
@@ -171,7 +182,7 @@ function PopupSettings({
           </div>
           <h3 className="popup__subtitle">Настройки аккаунта</h3>
 
-          <form
+          {isAuth && <form
             className={`popup__form`}
             action="#"
             name={`popup-form-settings`}
@@ -226,10 +237,11 @@ function PopupSettings({
             <button type="submit" className={`button popup__submit-button ${isDark && `button_theme_dark white`}`}>
               Применить изменения
             </button>
-          </form>
-          <button type="button" className={`button popup__logout-button ${isDark && `button_theme_dark`}`} onClick={handleLogout}>
+          </form>}
+          {!isAuth && <p className="popup__unautorize">Настройки недоступны, т.к. Вы не авторизованы!</p>}
+          {isAuth && <button type="button" className={`button popup__logout-button ${isDark && `button_theme_dark`}`} onClick={handleLogout}>
             Выйти из аккаунта
-          </button>
+          </button>}
         </div>
       </div>
     </div>

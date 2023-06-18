@@ -14,7 +14,7 @@ import buttonBackgroundPosition from "../images/nav-button-position.svg";
 import buttonBackgroundPositionThemeDark from "../images/nav-button-position-theme-dark.svg";
 import PopupSettings from "./PopupSettings";
 
-function Header({onValidation, isError, messageError, onUpdateUser, errorUpdateUser, isDark, setDark}) {
+function Header({onValidation, isError, messageError, onUpdateUser, errorUpdateUser, isDark, setDark, skybox, setSkybox}) {
 
   const [focus, setFocus] = useState("all");
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -88,6 +88,8 @@ useEffect(() => {
         errorUpdateUser={errorUpdateUser}
         isDark={isDark}
         setDark={setDark}
+        skybox={skybox}
+        setSkybox={setSkybox}
       />
       </>
     );
