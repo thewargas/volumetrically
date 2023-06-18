@@ -9,8 +9,8 @@
 
 :root {
   --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6);
-  --rsbs-bg: #E2E2E2;
-  --rsbs-handle-bg: #3A3A3A;
+  --rsbs-bg: #959595;
+  --rsbs-handle-bg: #BCBCBC;
   --rsbs-max-w: auto;
   --rsbs-ml: env(safe-area-inset-left);
   --rsbs-mr: env(safe-area-inset-right);
