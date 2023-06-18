@@ -1,7 +1,9 @@
 .model__nav-container {
-  margin-top: 30px;
+  /* margin-top: 30px; */
   width: 100%;
   justify-content: center;
   gap: 25px;
   display: flex;
+  position: absolute;
+  top: calc(100dvh / 1.2);
 }

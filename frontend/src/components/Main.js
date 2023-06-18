@@ -4,7 +4,7 @@ import Card from "./Card";
 import { useState } from "react";
 import PopupAddModel from "./PopupAddModel";
 
-function Main({ cards, onValidation, isError, messageError, url, handleUploadFile }) {
+function Main({ cards, onValidation, isError, messageError, url, handleUploadFile, onUpdateUser, errorUpdateUser, isDark, setDark, skybox, setSkybox }) {
   const [isPopupAddModelOpen, setPopupAddModelOpen] = useState(false);
 
   return (
@@ -13,19 +13,31 @@ function Main({ cards, onValidation, isError, messageError, url, handleUploadFil
         onValidation={onValidation}
         isError={isError}
         messageError={messageError}
+        onUpdateUser={onUpdateUser}
+        errorUpdateUser={errorUpdateUser}
+        isDark={isDark}
+        setDark={setDark}
+        skybox={skybox}
+        setSkybox={setSkybox}
       />
-      <main className="content">
+      <main className={`content ${isDark && `content_theme_dark`}`}>
         <section className="elements">
-          <article className="element">
+          <article className={`element ${isDark && `element_theme_dark`}`}>
             <button
-              className="element__add-button"
+              className={`element__add-button ${isDark && `element__add-button_theme_dark`}`}
               onClick={() => {
                 setPopupAddModelOpen(true);
               }}
             />
           </article>
           {cards.map((card) => {
-            return <Card card={card} />;
+            return (
+              <Card  
+                key= { card.id }
+                card= { card } 
+                isDark={isDark}
+              />
+            )
           })}
         </section>
       </main>

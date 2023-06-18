@@ -1,9 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import eye from "../images/eye.svg";
+import eyeThemeDark from "../images/eye-theme-dark.svg";
 import eyeHiden from "../images/eye-hiden.svg";
+import eyeHidenThemeDark from "../images/eye-hidden-theme-dark.svg";
 import loginIcon from "../images/login.svg";
+import loginIconThemeDark from "../images/login-theme-dark.svg";
 import emailIcon from "../images/email.svg";
+import emailIconThemeDark from "../images/email-theme-dark.svg";
 import errorIcon from "../images/error-icon.svg";
 
 function AuthForm({
@@ -18,11 +22,14 @@ function AuthForm({
   onSubmit,
   register,
   route,
+  errorAuth,
+  isDark
 }) {
   const [isVisible, setVisible] = useState(false);
 
   const formRef = useRef();
   const [isValidity, setValidity] = useState(true);
+
 
   const [inputs, setInputs] = useState({});
 
@@ -51,9 +58,9 @@ function AuthForm({
   }
 
   return (
-    <div className="auth">
-      <button className="back-button" onClick={() => navigate("/")}></button>
-      <h1 className="auth__title">{title}</h1>
+    <div className={`auth ${isDark && `auth_theme_dark`}`}>
+      <button className={`back-button ${isDark && `back-button_theme_dark`}`} onClick={() => navigate("/")}></button>
+      <h1 className={`auth__title ${isDark && `white`}`}>{title}</h1>
       <form
         className="auth__form"
         ref={formRef}
@@ -64,7 +71,7 @@ function AuthForm({
         {register && (
           <div className="inputs-container">
             <input
-              className={`input ${isError.email && "input_type_error"}`}
+              className={`input ${isDark && `input_theme_dark`} ${isError.email && `input_type_error`}`}
               type="email"
               placeholder="Эл. почта"
               name="email"
@@ -78,7 +85,7 @@ function AuthForm({
                 alt="Иконка ошибки"
               />
             )}
-            <img className="input__image" src={emailIcon} alt="Иконка логина" />
+            <img className="input__image" src={isDark ? emailIconThemeDark : emailIcon} alt="Иконка логина" />
             <span
               className={`auth__input-error ${
                 isError.email && "auth__input-error_active"
@@ -90,7 +97,7 @@ function AuthForm({
         )}
         <div className="inputs-container">
           <input
-            className={`input ${isError.login && "input_type_error"}`}
+            className={`input ${isDark && `input_theme_dark`} ${isError.login && "input_type_error"}`}
             type="text"
             placeholder="Логин"
             name="login"
@@ -105,7 +112,7 @@ function AuthForm({
               alt="Иконка ошибки"
             />
           )}
-          <img className="input__image" src={loginIcon} alt="Иконка логина" />
+          <img className="input__image" src={isDark ? loginIconThemeDark : loginIcon} alt="Иконка логина" />
           <span
             className={`auth__input-error ${
               isError.login && "auth__input-error_active"
@@ -120,7 +127,7 @@ function AuthForm({
           }`}
         >
           <input
-            className={`input ${isError.password && "input_type_error"}`}
+            className={`input ${isDark && `input_theme_dark`} ${isError.password && "input_type_error"}`}
             type={isVisible ? "text" : "password"}
             placeholder="Пароль"
             name="password"
@@ -138,7 +145,7 @@ function AuthForm({
           <img
             onClick={handleClickEye}
             className="input__image"
-            src={isVisible ? eye : eyeHiden}
+            src={isVisible ? (isDark ? eyeThemeDark : eye) : (isDark ? eyeHidenThemeDark : eyeHiden)}
             alt={isVisible ? "Пароль показан" : "Пароль скрыт"}
           />
           <span
@@ -152,7 +159,7 @@ function AuthForm({
         {register && (
           <div className={`inputs-container`}>
             <input
-              className={`input ${
+              className={`input ${isDark && `input_theme_dark`} ${
                 isError.repeatPassword && "input_type_error"
               }`}
               type={isVisible ? "text" : "password"}
@@ -172,7 +179,7 @@ function AuthForm({
             <img
               onClick={handleClickEye}
               className="input__image"
-              src={isVisible ? eye : eyeHiden}
+              src={isVisible ? (isDark ? eyeThemeDark : eye) : (isDark ? eyeHidenThemeDark : eyeHiden)}
               alt={isVisible ? "Пароль показан" : "Пароль скрыт"}
             />
             <span
@@ -189,8 +196,8 @@ function AuthForm({
             </span>
           </div>
         )}
-        {isAuth && (
-          <p className="auth__success-text">Вы успешно зарегистрировались!</p>
+        {(isAuth || errorAuth) && (
+          <p className={`auth__info-text ${ errorAuth && `auth__success-text_type_error`}`} >{(errorAuth && 'Неверный логин или пароль!') || `Вы успешно зарегистрировались!`}</p>
         )}
         <button
           disabled={
@@ -198,7 +205,7 @@ function AuthForm({
             (register && !(inputs.password === inputs.repeatPassword))
           }
           type="submit"
-          className={`button wellcome__button ${
+          className={`button wellcome__button ${isDark && `button_theme_dark`} ${
             (!isValidity ||
               (register && !(inputs.password === inputs.repeatPassword))) &&
             "button_disabled"
@@ -207,7 +214,7 @@ function AuthForm({
           {button}
         </button>
       </form>
-      <p className="auth__text">
+      <p className={`auth__text ${isDark && `white`}`}>
         {paragraph}{" "}
         <Link to={route} className="auth__link">
           {link}

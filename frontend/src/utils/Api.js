@@ -13,10 +13,11 @@ class Api {
   }
 
   uploadFile(data) {
-    return fetch(`${this._baseUrl}/upload`, {
-      headers: this._headers,
-      method: "POST",
-      body: data,
+    return fetch(`${this._baseUrl + data.url}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        'Content-Type': 'model/gltf-binary'
+      },
     }).then(this._handleResponse);
   }
 
@@ -32,21 +33,13 @@ class Api {
     }).then(this._handleResponse);
   }
 
-  changeAvatar(input) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
-      headers: this._headers,
-      method: "PATCH",
-      body: JSON.stringify({ avatar: input.avatar }),
-    }).then(this._handleResponse);
-  }
-
   changeUserInfo(inputs) {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
       method: "PATCH",
       body: JSON.stringify({
-        name: inputs.name,
-        about: inputs.about,
+        email: inputs.email,
+        login: inputs.login,
       }),
     }).then(this._handleResponse);
   }

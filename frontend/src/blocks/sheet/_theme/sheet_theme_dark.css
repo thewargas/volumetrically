@@ -1,0 +1,9 @@
+.sheet_theme_dark {
+  --rsbs-bg: #272727;
+  --rsbs-handle-bg: #BCBCBC;
+}
+
+.sheet_theme_dark:root {
+  --rsbs-bg: #272727;
+  --rsbs-handle-bg: #BCBCBC;
+}

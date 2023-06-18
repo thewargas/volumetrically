@@ -1,6 +1,5 @@
 .content {
-  padding: 0 10px;
-  width: 340px;
+  width: calc(100dvw - 0px);
   display: flex;
   justify-content: center;
 }

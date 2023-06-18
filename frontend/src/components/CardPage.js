@@ -1,8 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import modelView from "../images/model-3d-view.svg";
+import modelViewThemeDark from "../images/model-3d-view-theme-dark.svg";
 import infoIcon from "../images/version.svg";
+import infoIconThemeDark from "../images/version-theme-dark.svg";
 import modelSettings from "../images/settings.svg";
+import modelSettingsThemeDark from "../images/setting-theme-dark.svg";
 import { useState } from "react";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import "../vendor/styleSpringBottomSheet.css";
@@ -14,58 +17,58 @@ import darkThemeIcon from "../images/dark-theme.svg";
 import skyBoxIcon from "../images/skybox.svg";
 import versionIcon from "../images/version.svg";
 
-function CardPage({ card }) {
+import blueSkyBox from '../images/blue-sky-box.png';
+
+function CardPage({ card, skybox, setSkybox, isDark, setDark }) {
   const navigate = useNavigate();
 
   const [isInfoOpen, setInfoOpen] = useState(false);
   const [isSettingsOpen, setSettingsOpen] = useState(false);
 
-  const [isDark, setDark] = useState(false);
-
-  const [skybox, setSkybox] = useState("default");
-
   const [isPopupSkyboxOpen, setPopupSkyboxOpen] = useState(false);
 
   return (
-    <div className="model">
+    <div className={`model ${isDark && `model_theme_dark`}`}>
       <button
-        className="back-button"
+        className={`back-button ${(isDark || (skybox === 'Blue sky')) && `back-button_theme_dark`}`}
         onClick={() => {
           navigate("/models");
         }}
+        style={((skybox === 'Blue sky') && {color: '#FFFFFF'}) || null}
       ></button>
-      <h2 className="popup__title">Bathroom {card}</h2>
+      <h2 className={`popup__title ${(isDark || (skybox === 'Blue sky')) && `white`}`}>{card.name}</h2>
       <model-viewer
         height="470px"
         alt=""
         auto-rotate
-        src="https://disk.yandex.ru/d/7bZUrXrIIEzq0Q"
+        src={card.link}
         camera-controls
-        style={{ width: "100%", height: "400px" }}
+        style={{ width: "100dvw", height: "100dvh", position: 'fixed', zIndex: '0', top: '0', left: '0'}}
+        skybox-image={((skybox === 'Blue sky') && blueSkyBox) || null}
       >
-        <div class="progress-bar hide" slot="progress-bar">
-          <div class="update-bar"></div>
+        <div className="progress-bar hide" slot="progress-bar">
+          <div className="update-bar"></div>
         </div>
       </model-viewer>
       <nav className="model__nav-container">
-        <button className="model__button">
-          <img src={modelView} alt="Просмотр 3d модели в пространстве" />
+        <button className={`model__button ${isDark && `model__button_theme_dark`}`}>
+          <img src={isDark ? modelViewThemeDark : modelView} alt="Просмотр 3d модели в пространстве" />
         </button>
         <button
-          className="model__button"
+          className={`model__button ${isDark && `model__button_theme_dark`}`}
           onClick={() => {
             setInfoOpen(true);
           }}
         >
-          <img src={infoIcon} alt="Просмотр 3d модели в пространстве" />
+          <img src={isDark ? infoIconThemeDark : infoIcon} alt="Просмотр 3d модели в пространстве" />
         </button>
         <button
-          className="model__button"
+          className={`model__button ${isDark && `model__button_theme_dark`}`}
           onClick={() => {
             setSettingsOpen(true);
           }}
         >
-          <img src={modelSettings} alt="Просмотр 3d модели в пространстве" />
+          <img src={isDark ? modelSettingsThemeDark : modelSettings} alt="Просмотр 3d модели в пространстве" />
         </button>
       </nav>
       <BottomSheet
@@ -74,7 +77,7 @@ function CardPage({ card }) {
           setInfoOpen(false);
         }}
       >
-        <div className="sheet">
+        <div className={`sheet`}>
           <h2 className="sheet__title">Информация</h2>
           <div className="fields">
             <div className="field">
@@ -82,14 +85,14 @@ function CardPage({ card }) {
                 <img src={nameModelIcon} alt="Иконка полумесяца" />
                 <p className="field__text">Название</p>
               </div>
-              <p className="field__info">Bathroom</p>
+              <p className="field__info">{card.name}</p>
             </div>
             <div className="field">
               <div className="field__container">
                 <img src={userIcon} alt="Иконка полумесяца" />
                 <p className="field__text">Автор</p>
               </div>
-              <p className="field__info">User1</p>
+              <p className="field__info">{card.owner}</p>
             </div>
             <div className="field">
               <div className="field__container">
@@ -101,8 +104,7 @@ function CardPage({ card }) {
                 <p className="field__text">Описание</p>
               </div>
               <p className="field__info">
-                Ванная комната со стиральной машиной, ванной, зеркалом и
-                раковиной.
+                {card.description}
               </p>
             </div>
             <div className="field">
@@ -114,7 +116,7 @@ function CardPage({ card }) {
                 />
                 <p className="field__text">Вес файла</p>
               </div>
-              <p className="field__info">7,36 MB</p>
+              <p className="field__info">{card.fileWeight}</p>
             </div>
             <div className="field">
               <div className="field__container">
@@ -125,7 +127,7 @@ function CardPage({ card }) {
                 />
                 <p className="field__text">Дата публикации</p>
               </div>
-              <p className="field__info">20.06.2023</p>
+              <p className="field__info">{card.createDate}</p>
             </div>
           </div>
         </div>
@@ -214,7 +216,7 @@ function CardPage({ card }) {
                 <img src={versionIcon} alt="Иконка полумесяца" />
                 <p className="field__text">Версия приложения</p>
               </div>
-              <p className="field__info">1.0.0</p>
+              <p className="field__info" style={{width: '37px'}}>1.0.0</p>
             </div>
 
             <div

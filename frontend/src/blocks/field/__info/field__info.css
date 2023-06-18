@@ -1,6 +1,9 @@
 .field__info {
   margin: auto 9px auto 0;
   color: #606060;
-  width: 150px;
+  width: 160px;
   min-height: 19px;
+  max-height: 94px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

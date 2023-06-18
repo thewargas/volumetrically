@@ -3,6 +3,7 @@ import errorIcon from "../images/error-icon.svg";
 import nameModelIcon from "../images/name-model.svg";
 import glbIcon from "../images/glb-file.svg";
 import infoIcon from "../images/version.svg";
+import axios from "axios";
 
 function PopupAddModel({
   isOpen,
@@ -23,6 +24,8 @@ function PopupAddModel({
   const [selectedFile, setSelectedFile] = useState([]);
   const [urlFile, setUrlFile] = useState('');
 
+  const instance = 
+
   useEffect(() => {
     setValidity(formRef.current.checkValidity());
   }, [isOpen, isError]);
@@ -40,12 +43,33 @@ function PopupAddModel({
     onValidation(e);
   }
 
-  const handleChangeFile = (e) => {
-    setSelectedFile(e.target.files[0]);
-    const formData = new FormData();
-    formData.append('file', selectedFile)
-    console.log(selectedFile);
-    handleUploadFile(formData);
+  const handleChangeFile = async (e) => {
+    try {
+      setSelectedFile(e.target.files[0]);
+      const file = e.target.files[0];
+      const formData = new FormData();
+      formData.append('file', file)
+      const { data } = await axios.post('https://api.thewargas.nomoredomains.monster/upload', formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log(data);
+      console.log(`https://api.thewargas.nomoredomains.monster${data.url}`);
+      // const { uploadFile } = await axios.get(`https://api.thewargas.nomoredomains.monster${data.url}`, {
+      //   headers: {
+      //     Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      //     'Content-Type': 'application/octet-stream',
+      //   },
+      // });
+      // console.log(uploadFile);
+      handleUploadFile(data);
+    } catch (err) {
+      console.warn(err);
+      alert("Ошибка при загрузке файла");
+    }
+    
   };
 
   const handleClickUploadFile = () => {
