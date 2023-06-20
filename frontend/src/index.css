@@ -28,6 +28,7 @@
 @import url(./blocks/fields/fields.css);
 @import url(./blocks/fields/_theme/fields_theme_dark.css);
 @import url(./blocks/field/field.css);
+@import url(./blocks/field/_theme/field_theme_dark.css);
 @import url(./blocks/field/__text/field__text.css);
 @import url(./blocks/field/__text/_theme/field__text_theme_dark.css);
 @import url(./blocks/field/__container/field__container.css);
