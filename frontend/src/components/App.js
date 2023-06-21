@@ -32,18 +32,18 @@ function App() {
       poster: "../public-models/DamagedHelmet-image.webp",
       skybox: "disabled",
     },
-    {
-      id: "126b05f7-1884-42bc-952f-ada6a80feca6",
-      name: "Санузел",
-      link: "../public-models/bathroom.glb",
-      owner: "Михаил",
-      fileWeight: "6,43 МБ",
-      description:
-        "Ванная комната со стиральной машиной, ванной, зеркалом и раковиной.",
-      createDate: "17.06.2023",
-      poster: "../public-models/bathroom-image.webp",
-      skybox: "disabled",
-    },
+    // {
+    //   id: "126b05f7-1884-42bc-952f-ada6a80feca6",
+    //   name: "Санузел",
+    //   link: "../public-models/bathroom.glb",
+    //   owner: "Михаил",
+    //   fileWeight: "6,43 МБ",
+    //   description:
+    //     "Ванная комната со стиральной машиной, ванной, зеркалом и раковиной.",
+    //   createDate: "17.06.2023",
+    //   poster: "../public-models/bathroom-image.webp",
+    //   skybox: "disabled",
+    // },
     {
       id: "0ab020c7-57c3-4a3e-abe4-00230ae587c0",
       name: "Плюшевый кот",
@@ -216,7 +216,7 @@ function App() {
   const [modelUrl, setModelUrl] = useState("");
 
   const [isDark, setDark] = useState(true);
-  const [skybox, setSkybox] = useState("default");
+  const [skybox, setSkybox] = useState("Blue sky");
 
   const navigate = useNavigate();
 

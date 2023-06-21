@@ -80,6 +80,8 @@ function CardPage({ card, skybox, setSkybox, isDark, setDark }) {
       <nav className="model__nav-container">
         <button
           className={`model__button ${isDark && `model__button_theme_dark`}`}
+          slot="ar-button"
+          id="ar-button"
         >
           <img
             src={isDark ? modelViewThemeDark : modelView}
