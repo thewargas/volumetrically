@@ -61,14 +61,14 @@ function PopupAddModel({
       });
       console.log(data);
       console.log(`https://api.thewargas.nomoredomains.monster${data.url}`);
-      // const { uploadFile } = await axios.get(`https://api.thewargas.nomoredomains.monster${data.url}`, {
-      //   headers: {
-      //     Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-      //     'Content-Type': 'application/octet-stream',
-      //   },
-      // });
-      // console.log(uploadFile);
-      handleUploadFile(data);
+       const { uploadFile } = await axios.get(`https://api.thewargas.nomoredomains.monster${data.url}`, {
+         headers: {
+           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+           'Content-Type': 'application/octet-stream',
+         },
+       });
+       console.log(uploadFile);
+      // handleUploadFile(data);
     } catch (err) {
       console.warn(err);
       alert("Ошибка при загрузке файла");
