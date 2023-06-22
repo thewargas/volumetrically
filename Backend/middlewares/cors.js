@@ -3,6 +3,8 @@ const allowedCors = [
   'https://localhost:3000',
   'https://thewargas.nomoredomains.monster',
   'http://thewargas.nomoredomains.monster',
+  'https://thewargas.nomoredomains.monster/*',
+  'http://thewargas.nomoredomains.monster/*',
   'https://api.thewargas.nomoredomains.monster',
   'http://api.thewargas.nomoredomains.monster',
 ];
