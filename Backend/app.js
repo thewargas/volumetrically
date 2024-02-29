@@ -35,8 +35,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(requestLogger);
 app.use(enableCors);
 
-app.use("/upload", cors());
-
 app.post("/upload", upload.single("file"), (req, res) => {
   res.json({
     url: `/uploads/${req.file.originalname}`,
