@@ -41,6 +41,18 @@ app.post("/upload", upload.single("file"), (req, res) => {
   });
 });
 
+// Добавляем новый маршрут для загрузки файла с сервера
+app.get("/download/:filename", (req, res) => {
+  const { filename } = req.params;
+  const filePath = `uploads/${filename}`;
+  res.sendFile(filePath, { root: __dirname }, (err) => {
+    if (err) {
+      console.error(err);
+      res.status(404).send("File not found");
+    }
+  });
+});
+
 app.use(router);
 
 app.use(errorLogger);

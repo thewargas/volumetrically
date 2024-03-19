@@ -26,18 +26,11 @@ function PopupAddModel({
   const [inputs, setInputs] = useState({});
 
   const [selectedFile, setSelectedFile] = useState([]);
-  const [urlFile, setUrlFile] = useState('');
+  const [urlFile, setUrlFile] = useState("");
 
-  const instance = 
-
-  useEffect(() => {
+  const instance = useEffect(() => {
     setValidity(formRef.current.checkValidity());
   }, [isOpen, isError]);
-
-  useEffect(() => {
-    setUrlFile(url);
-    console.log(urlFile);
-  }, [url]);
 
   function handleChangeInput(e) {
     setInputs({
@@ -49,32 +42,53 @@ function PopupAddModel({
 
   const handleChangeFile = async (e) => {
     try {
-      setSelectedFile(e.target.files[0]);
       const file = e.target.files[0];
+      const uniqueName = `${Date.now()}-${file.name}`; // Создаем уникальное имя файла
+      setSelectedFile(file);
       const formData = new FormData();
-      formData.append('file', file)
-      const { data } = await axios.post('https://api.thewargas.nomoredomains.monster/upload', formData, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      formData.append("file", file, uniqueName); // Прикрепляем уникальное имя к файлу в FormData
+      const { data } = await axios.post(
+        "https://api.thewargas.nomoredomains.monster/upload",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       console.log(data);
       console.log(`https://api.thewargas.nomoredomains.monster${data.url}`);
-       const { uploadFile } = await axios.get(`https://api.thewargas.nomoredomains.monster${data.url}`, {
-         headers: {
-           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-           'Content-Type': 'application/octet-stream',
-         },
-       });
-       console.log(uploadFile);
-      // handleUploadFile(data);
+      setUrlFile(`https://api.thewargas.nomoredomains.monster${data.url}`);
     } catch (err) {
       console.warn(err);
       alert("Ошибка при загрузке файла");
     }
-    
   };
+
+  const downloadFile = async (fileUrl) => {
+    try {
+      const response = await axios.get(fileUrl, {
+        responseType: "blob", // Указываем, что ожидаем файл в ответе
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      });
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "file"); // Устанавливаем имя файла при скачивании
+      document.body.appendChild(link);
+      link.click();
+    } catch (err) {
+      console.warn(err);
+      alert("Ошибка при загрузке файла с сервера");
+    }
+  };
+
+  useEffect(() => {
+    downloadFile(urlFile);
+  }, [urlFile]);
 
   const handleClickUploadFile = () => {
     inputRef.current.click();
@@ -82,7 +96,11 @@ function PopupAddModel({
 
   return (
     <div className={`popup ${isOpen && "popup_active"}`}>
-      <div className={`popup__container ${isDark && `popup__container_theme_dark`}`}>
+      <div
+        className={`popup__container ${
+          isDark && `popup__container_theme_dark`
+        }`}
+      >
         <div>
           <button
             className={`back-button ${isDark && `back-button_theme_dark`}`}
@@ -90,7 +108,9 @@ function PopupAddModel({
               setOpen(false);
             }}
           ></button>
-          <h2 className={`popup__title ${isDark && `white`}`}>Добавить модель</h2>
+          <h2 className={`popup__title ${isDark && `white`}`}>
+            Добавить модель
+          </h2>
           <form
             className={`popup__form`}
             action="#"
@@ -99,7 +119,9 @@ function PopupAddModel({
             noValidate
           >
             <div
-              className={`inputs-container inputs-container_type_file ${isDark && `inputs-container_theme_dark`}`}
+              className={`inputs-container inputs-container_type_file ${
+                isDark && `inputs-container_theme_dark`
+              }`}
               onClick={handleClickUploadFile}
             >
               <input
@@ -128,7 +150,9 @@ function PopupAddModel({
             </div>
             <div className="inputs-container">
               <input
-                 className={`input ${isDark && `input_theme_dark`} ${isError.modelName && "input_type_error"}`}
+                className={`input ${isDark && `input_theme_dark`} ${
+                  isError.modelName && "input_type_error"
+                }`}
                 type="text"
                 placeholder="Название модели"
                 name="modelName"
@@ -158,7 +182,9 @@ function PopupAddModel({
             </div>
             <div className="inputs-container inputs-container_type_description">
               <textarea
-                 className={`input ${isDark && `input_theme_dark`} input_type_descriprion ${
+                className={`input ${
+                  isDark && `input_theme_dark`
+                } input_type_descriprion ${
                   isError.modelDescription && "input_type_error"
                 }`}
                 type="text"
@@ -188,11 +214,21 @@ function PopupAddModel({
                 {isError.modelDescription && messageError.modelDescription}
               </span>
             </div>
-            <button type="submit" className={`button popup__submit-button ${isDark && `button_theme_dark white`}`}>
+            <button
+              type="submit"
+              className={`button popup__submit-button ${
+                isDark && `button_theme_dark white`
+              }`}
+            >
               Опубликовать
             </button>
           </form>
-          <button type="button" className={`button popup__logout-button ${isDark && `button_theme_dark`}`}>
+          <button
+            type="button"
+            className={`button popup__logout-button ${
+              isDark && `button_theme_dark`
+            }`}
+          >
             Отменить
           </button>
         </div>
