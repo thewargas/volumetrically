@@ -37,7 +37,7 @@ app.use(enableCors);
 
 app.post("/upload", upload.single("file"), (req, res) => {
   res.json({
-    url: `/uploads/${req.file.originalname}`,
+    url: `/${req.file.originalname}`,
   });
 });
 
