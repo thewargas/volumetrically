@@ -58,8 +58,12 @@ function PopupAddModel({
         }
       );
       console.log(data);
-      console.log(`https://api.thewargas.nomoredomains.monster${data.url}`);
-      setUrlFile(`https://api.thewargas.nomoredomains.monster${data.url}`);
+      console.log(
+        `https://api.thewargas.nomoredomains.monster/download${data.url}`
+      );
+      setUrlFile(
+        `https://api.thewargas.nomoredomains.monster/download${data.url}`
+      );
     } catch (err) {
       console.warn(err);
       alert("Ошибка при загрузке файла");

@@ -8,6 +8,7 @@ const router = require("./routes");
 const selectErrors = require("./middlewares/errors");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
 const enableCors = require("./middlewares/cors");
+const mime = require("mime");
 
 const { PORT = 3003, DB_URL = "mongodb://127.0.0.1:27017/modelsdb" } =
   process.env;
@@ -37,14 +38,21 @@ app.use(enableCors);
 
 app.post("/upload", upload.single("file"), (req, res) => {
   res.json({
-    url: `/${req.file.originalname}`,
+    url: `/uploads/${req.file.originalname}`,
   });
 });
 
-// Добавляем новый маршрут для загрузки файла с сервера
 app.get("/download/:filename", (req, res) => {
   const { filename } = req.params;
   const filePath = `uploads/${filename}`;
+
+  // Определение типа файла на основе его расширения
+  const contentType = mime.getType(filePath);
+
+  // Установка правильного Content-Type заголовка
+  res.setHeader("Content-Type", contentType);
+
+  // Отправка файла обратно клиенту
   res.sendFile(filePath, { root: __dirname }, (err) => {
     if (err) {
       console.error(err);
