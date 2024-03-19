@@ -44,7 +44,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
 
 app.get("/download/:filename", (req, res) => {
   const { filename } = req.params;
-  const filePath = `uploads/${filename}`;
+  const filePath = `${__dirname}/uploads/${filename}`; // Используем абсолютный путь к файлу
 
   // Определение типа файла на основе его расширения
   const contentType = mime.getType(filePath);
@@ -53,7 +53,7 @@ app.get("/download/:filename", (req, res) => {
   res.setHeader("Content-Type", contentType);
 
   // Отправка файла обратно клиенту
-  res.sendFile(filePath, { root: __dirname }, (err) => {
+  res.sendFile(filePath, (err) => {
     if (err) {
       console.error(err);
       res.status(404).send("File not found");
