@@ -91,7 +91,7 @@ function PopupAddModel({
   };
 
   useEffect(() => {
-    downloadFile(urlFile);
+    // downloadFile(urlFile);
   }, [urlFile]);
 
   const handleClickUploadFile = () => {
